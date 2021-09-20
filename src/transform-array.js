@@ -22,8 +22,7 @@ export default function transform(arr) {
     //  console.log(arr[i]);  
     console.log(arr[i] === '--double-prev')
     if (!(arr[i] === "--discard-next" || arr[i] === '--discard-prev' || arr[i] === "--double-next" || arr[i] === '--double-prev')) outputArr.push(arr[i])
-    //console.log((arr[i] !== "--discard-next" || arr[i] !== "--discard-prev" || arr[i] !== "--double-next" || arr[i] !== "--double-prev"))
-    //console.log(outputArr);
+    else if (arr[i - 2] === "--discard-next") continue
 
     if (arr[i] === `--discard-next` && i !== arr.length - 1) {
       i++
