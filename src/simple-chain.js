@@ -20,8 +20,11 @@ export default {
     return this
   },
   removeLink(position) {
-    if (!Number.isInteger(position) || position <= 0 || position > this.arr.length - 1) throw new ('You can\'t remove incorrect link!');
-    else this.arr.splice(position - 1, 1)
+    if (!Number.isInteger(position) || position <= 0 || position > this.arr.length - 1) {
+      this.arr = []
+      this.string = ''
+      throw new Error("You can't remove incorrect link!");
+    } else this.arr.splice(position - 1, 1)
 
     console.log('remove position', position, this.arr)
 
