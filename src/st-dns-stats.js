@@ -22,7 +22,60 @@ import { NotImplementedError } from '../extensions/index.js';
  * }
  *
  */
-export default function getDNSStats(/* domains */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function getDNSStats(domains) {
+  let map = new Map()
+
+  domains.forEach(item => {
+    if (map.has(item)) {
+      map.set(item, map.get(item) + 1)
+    } else {
+      map.set(item, 1)
+    }
+    for (let i = 0; i < item.length; i++) {
+      if (item[i] === '.') {
+        console.log(map.has(item.slice(i + 1)));
+        if (map.has(item.slice(i + 1))) {
+          map.set(item.slice(i + 1), map.get(item.slice(i + 1)) + 1)
+        } else {
+          map.set(item.slice(i + 1), 1)
+        }
+      }
+    }
+  })
+  let a = {}
+  let arr = Array.from(map.entries())
+  arr.forEach(item => {
+    a['.' + item[0].split('.').reverse().join('.')] = item[1]
+  })
+return a
 }
+
+
+// .join('.')
+
+// export default function getDNSStats(domains) {
+//   let map = new Map()
+
+//   domains.forEach(item => {
+//     if (map.has('.' + item)) {
+//       map.set('.' + item, map.get('.' + item) + 1)
+//     } else {
+//       map.set('.' + item, 1)
+//     }
+//     for (let i = 0; i < item.length; i++) {
+//       if (item[i] === '.') {
+//         console.log(map.has(item.slice(i)));
+//         if (map.has(item.slice(i))) {
+//           map.set(item.slice(i), map.get(item.slice(i)) + 1)
+//         } else {
+//           map.set(item.slice(i), 1)
+//         }
+//       }
+//     }
+//   })
+//   let arr = Array.from(map.entries())
+//   arr.forEach(item => {
+//     item[0] = item[0].split('.').reverse().join('.')
+//   })
+//   console.log(arr);
+// }
