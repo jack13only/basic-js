@@ -50,32 +50,3 @@ export default function getDNSStats(domains) {
 return a
 }
 
-
-// .join('.')
-
-// export default function getDNSStats(domains) {
-//   let map = new Map()
-
-//   domains.forEach(item => {
-//     if (map.has('.' + item)) {
-//       map.set('.' + item, map.get('.' + item) + 1)
-//     } else {
-//       map.set('.' + item, 1)
-//     }
-//     for (let i = 0; i < item.length; i++) {
-//       if (item[i] === '.') {
-//         console.log(map.has(item.slice(i)));
-//         if (map.has(item.slice(i))) {
-//           map.set(item.slice(i), map.get(item.slice(i)) + 1)
-//         } else {
-//           map.set(item.slice(i), 1)
-//         }
-//       }
-//     }
-//   })
-//   let arr = Array.from(map.entries())
-//   arr.forEach(item => {
-//     item[0] = item[0].split('.').reverse().join('.')
-//   })
-//   console.log(arr);
-// }
